@@ -17,7 +17,8 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # settings.py
-LOGOUT_REDIRECT_URL = 'home'  # Redirect to the homepage after logging out
+# settings.py
+LOGIN_REDIRECT_URL = '/'  # This redirects users to the home page after login
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/

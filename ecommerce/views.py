@@ -282,12 +282,10 @@ class CheckoutDetails(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# In views.py
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
-# Register view to handle user registration
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
