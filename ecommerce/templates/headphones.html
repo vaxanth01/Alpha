@@ -37,11 +37,16 @@
             </li>
 
             <li class="sidebar">
-                <a  class="close" onclick="closeSidebar()"   href="#"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="30px" fill="#ececec"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+                <a  class="close"  onclick="closeSidebar()"   href="#"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="30px" fill="#ececec"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
                 <a href="{% url 'home' %}"><p>HOME</p></a>
-                <a href="{% url 'headphones' %}"><p>HEADPHONES</p></a>
-                <a href="{% url 'speakers' %}"><p>SPEAKERS</p></a>
-                <a href="{% url 'earphones' %}"><p>EARPHONES</p></a>
+                <a href="{% url 'headphones' %}"><p>ABOUT</p></a>
+                <a href="{% url 'speakers' %}"><p>PRODUCT</p></a>
+                <a href="{% url 'earphones' %}"><p>CONTACT</p></a>
+                {% if user.is_authenticated %}
+                <a class="hide" href="{% url 'log_out' %}"><p>LOGOUT</p></a>
+                {% else %}
+                <a href="{% url 'log_in' %}"><p>LOGIN</p></a>
+                {% endif %}
             </li>
             <div style="position: absolute; right: 0%;"  class="cart-box">
                 <img id="close" style="margin-left:13em;" src="{% static 'images/close.svg' %}">
