@@ -282,18 +282,50 @@ class CheckoutDetails(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+# In views.py
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+from .forms import CustomUserForm  # Assuming you have a custom form for user registration
 
-def register(request):
+def register_(request):
+    form = CustomUserForm()  # Display empty form initially
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserForm(request.POST)
         if form.is_valid():
-            user = form.save()  # Save the new user
-            login(request, user)  # Log the user in after registration
-            return redirect('home')  # Redirect to the home page after successful registration
-    else:
-        form = UserCreationForm()  # Display the registration form when the page loads
-    
-    return render(request, 'registration/register.html', {'form': form})
+            form.save()  # Save the new user
+            messages.success(request, "Registration successful! You can log in now.")
+            return redirect('/log_in')  # Redirect to the login page after successful registration
+    return render(request, "registration/register.html", {'form': form})
+
+# In views.py
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.contrib import messages
+
+def log_in(request):
+    if request.method == 'POST':
+        name = request.POST.get('username')
+        pwd = request.POST.get('password')
+        user = authenticate(request, username=name, password=pwd)
+        if user is not None:
+            login(request, user)  # Log the user in
+            messages.success(request, "Logged in successfully!")
+            return redirect("/")  # Redirect to the home page after successful login
+        else:
+            messages.error(request, "Invalid username or password.")
+            return redirect("log_in")  # Stay on login page if credentials are invalid
+    return render(request, "registration/login.html")
+
+
+# In views.py
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+from django.contrib import messages
+
+def log_out(request):
+    if request.user.is_authenticated:  # Check if the user is logged in
+        logout(request)  # Log out the user
+        messages.success(request, "Logged out successfully.")
+    return redirect('/log_in')  # Redirect to the login page after logout

@@ -3,26 +3,39 @@
 <html lang="en">
 <head>
     <link rel="Stylesheet" href="{% static  'css/headphones.css' %}">
-    <link rel="website icon" type="image/png"  href="{%  static 'images/logo.png' %}">
+    <link rel="website icon" type="image/png"  href="{% static 'images/lo.jpg' %}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speakers</title>
+    <title>EVAI</title>
 </head>
 <body>
-    <header>
-        <li>
-            <svg class="menu" onclick="showSidebar()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ececec"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
-            <h3 class="logo">audiophile</h3>
-            <a class="hide" href="{% url 'home' %}"><p>HOME</p></a>
-            <a class="hide" href="{% url 'headphones' %}"><p>HEADPHONES</p></a>
-            <a class="hide" href="{% url 'speakers' %}"><p>SPEAKERS</p></a>
-            <a class="hide" href="{% url 'earphones' %}"><p>EARPHONES</p></a>
-            <div class="cart-container">
-                <a id="cartIcon" class="cart" href='#'><img src="{% static 'images/cart.webp' %}" alt=""></a>
-                <div class="cartCircle">0</div>
-            </div>
-        </li>
+      <div class="header">
+        <header>
+            <li>
+                    <svg class="menu" onclick="showSidebar()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ececec"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+                    <div style="margin-top: 10px;"> <a href="{% url 'home' %}" style="display: flex; align-items: center; margin-right: auto; text-decoration: none;">
+                        <img src="{% static 'images/lo.jpg' %}" alt="Logo" style="width: 50px; height: 50px; margin-right: 10px; border-radius: 5px;">
+                    </a></div>  
+                    <a href="{% url 'home' %}"> <h3 class="logo">EVAI Technology</h3></a>
+                    <a class="hide" href="{% url 'home' %}"><p>HOME</p></a>
+                    <a class="hide" href="{% url 'headphones' %}"><p>ABOUT</p></a>
+                    <a class="hide" href="{% url 'speakers' %}"><p>PRODUCT</p></a>
+                    <a class="hide" href="{% url 'earphones' %}"><p>CONTACT</p></a>
+                    <div class="cart-container">
+                        <a id="cartIcon" class="cart" href="#"> <img src="{% static 'images/cart.webp' %}" alt=""></a>
+                        <div class="cartCircle">0</div>
+                    </div>
+                    
+                    {% if user.is_authenticated %}
+                        <a class="hide" href="{% url 'log_out' %}"><p>LOGOUT</p></a>
+                        <p>Welcome, {{ user.username }}!</p> 
+                    {% else %}
+                        <a class="hide" href="{% url 'log_in' %}"><p>LOGIN</p></a>
+                    {% endif %}
+                    
+            </li>
+
         <li class="sidebar">
             <a  class="close"  onclick="closeSidebar()"   href="#"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="30px" fill="#ececec"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
             <a href="{% url 'home' %}"><p>HOME</p></a>
