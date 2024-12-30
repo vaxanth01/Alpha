@@ -16,7 +16,8 @@
             <div class="icon mr-2 d-flex justify-content-center align-items-center">
               <span class="icon-paper-plane"></span>
             </div>
-            <span class="text">evai@gmail.com</span>
+                
+            <span class="text">evaitech.official@gmail.com</span>
           </div>
           <!-- Company Name -->
           <div class="col-md-4 d-flex topper align-items-center justify-content-md-end">
@@ -29,28 +30,30 @@
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-white" id="ftco-navbar">
+  <a style="margin-left: 50px;" href="{% url 'home' %}">
+    <img src="{% static 'images/logo.jpg' %}" alt="logo" class="logo">
+  </a>
   <div class="container">
-    <a href="{% url 'home' %}">
-      <img src="{% static 'images/evai.png' %}" alt="logo" class="logo">
-    </a>
-
+   
   <style>
     /* Default logo size */
     .logo {
-        width: 100px; /* Default size */
-        height: auto; /* Maintain aspect ratio */
+        width: 200px;
+        
+        height: 60px; 
     }
-
     /* Adjust logo size for smaller screens */
     @media (max-width: 768px) { /* Target screens smaller than 768px */
         .logo {
-            width: 70px; /* Smaller size for mobile */
+            width: 80px;
+            height: 30px; /* Smaller size for mobile */
         }
     }
 
     @media (max-width: 480px) { /* Target even smaller screens (like phones) */
         .logo {
-            width: 50px; /* Further reduce size */
+            width: 50px;
+            height: 15px; /* Further reduce size */
         }
     }
 

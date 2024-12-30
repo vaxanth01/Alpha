@@ -2,41 +2,35 @@
 {% load static %}
 
 {% block content %}
-
 <section id="home-section" class="hero">
-    <div class="home-slider owl-carousel">
-      <div class="slider-item" style="background-image: url({% static 'images/bg1.jpg' %});">
-        <div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
-  
-            <div class="col-md-12 ftco-animate text-center">
-              <h1 class="mb-2">We serve Software Applications &amp; HardWare Applications</h1>
-              <h2 class="subheading mb-4">We deliver Electronic Product &amp; Services</h2>
-              <p><a href="#" class="btn btn-primary">View Details</a></p>
-            </div>
-  
-          </div>
-        </div>
-      </div>
-  
-      <div class="slider-item" style="background-image: url({% static 'images/bg_2.jpg' %});">
-        <div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
-  
-            <div class="col-sm-12 ftco-animate text-center">
-              <h1 class="mb-2">100% Trustable &amp; Product</h1>
-              <h2 class="subheading mb-4">We deliver IOT Based System  &amp; Cloud Based System</h2>
-              <p><a href="#" class="btn btn-primary">View Details</a></p>
-            </div>
-  
+  <div class="home-slider owl-carousel">
+    <!-- First Slider Item -->
+    <div class="slider-item" style="background-image: url({% static 'images/bg2.jpg' %});">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row slider-text justify-content-center align-items-center">
+          <div class="col-md-12 text-center ">
+            <h3 style="font-size:xx-large;color: aliceblue;"  class="mb-2">We serve Software Applications &amp; Hardware Applications</h3>
+            <h2 class="subheading mb-4">We deliver Electronic Products &amp; Services</h2>
+            <p><a href="#" class="btn btn-primary">View Details</a></p>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  
+    <div class="slider-item" style="background-image: url({% static 'images/bg3.jpg' %});">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row slider-text justify-content-center align-items-center">
+          <div class="col-sm-12 text-center">
+            <h3 style="font-size:xx-large;color: aliceblue" class="mb-2">100% Trustable Products</h3>
+            <h2 class="subheading mb-4">We deliver IoT-Based Systems &amp; Cloud-Based Systems</h2>
+            <p><a href="#" class="btn btn-primary">View Details</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
   <section class="ftco-section">
     <div class="container">
       <div class="row no-gutters ftco-services">
@@ -87,7 +81,6 @@
       </div>
     </div>
   </section>
-  
   <section class="ftco-section ftco-category ftco-no-pt">
     <div class="container">
       <div class="row">
@@ -115,7 +108,6 @@
             </div>
           </div>
         </div>
-  
         <div class="col-md-4">
           <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url({% static 'images/finance.jpg' %});">
             <div class="text px-3 py-1">
@@ -131,7 +123,6 @@
       </div>
     </div>
   </section>
-  
   <section class="ftco-section">
     <div class="container">
       <div class="row justify-content-center mb-3 pb-3">
@@ -181,8 +172,7 @@
       </div>
     </div>
   </section>
-  
-  <section class="ftco-section img" style="background-image: url({% static 'images/bg_3.jpg' %});">
+  <section class="ftco-section img" style="background-image: url({% static 'images/bg4.jpg' %});">
     <div class="container">
       <div class="row justify-content-end">
         <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate">
@@ -201,8 +191,7 @@
       </div>
     </div>
   </section>
-  
-  <section class="ftco-section testimony-section">
+<section class="ftco-section testimony-section">
     <div class="container">
       <div class="row justify-content-center mb-5 pb-3">
         <div class="col-md-7 heading-section ftco-animate text-center">
