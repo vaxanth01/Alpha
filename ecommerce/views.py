@@ -281,42 +281,44 @@ class CheckoutDetails(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-# In views.py
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomUserForm
 from django.contrib import messages
-from .forms import CustomUserForm  # Assuming you have a custom form for user registration
 
-def register_(request):
-    form = CustomUserForm()  # Display empty form initially
+def register(request):
     if request.method == 'POST':
         form = CustomUserForm(request.POST)
         if form.is_valid():
             form.save()  # Save the new user
             messages.success(request, "Registration successful! You can log in now.")
-            return redirect('/log_in')  # Redirect to the login page after successful registration
-    return render(request, "registration/register.html", {'form': form})
-
-# In views.py
-from django.contrib.auth import authenticate, login
+            return redirect('log_in')  # Redirect to login page after successful registration
+    else:
+        form = CustomUserForm()
+    return render(request, 'registration/register.html', {'form': form})
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from .forms import LoginForm
 from django.contrib import messages
 
 def log_in(request):
     if request.method == 'POST':
-        name = request.POST.get('username')
-        pwd = request.POST.get('password')
-        user = authenticate(request, username=name, password=pwd)
-        if user is not None:
-            login(request, user)  # Log the user in
-            messages.success(request, "Logged in successfully!")
-            return redirect("/")  # Redirect to the home page after successful login
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)  # Log the user in
+                messages.success(request, "Logged in successfully!")
+                return redirect('/')  # Redirect to the home page or dashboard
+            else:
+                messages.error(request, "Invalid username or password.")
         else:
-            messages.error(request, "Invalid username or password.")
-            return redirect("log_in")  # Stay on login page if credentials are invalid
-    return render(request, "registration/login.html")
+            messages.error(request, "Please correct the errors below.")
+    else:
+        form = LoginForm()
+    
+    return render(request, 'registration/login.html', {'form': form})
 
 
 # In views.py

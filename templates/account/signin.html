@@ -8,18 +8,22 @@
       <div class="container">
         <div class="row block-9">
           <div class="col-md-6 order-md-last d-flex">
-            <form class="bg-white p-5 contact-form" action="{% url 'register' %}" method="post">
-              {% csrf_token %} {% for field in form %}
-              <div class="form-group">
-                {{field}}
-              </div>
-              {% endfor %}
-            
-              <div class="form-group">
-                Already have an account? Sign in <a href="{% url 'log_in' %}">here</a>.
-                <input type="submit" value="Register" class="btn btn-primary py-3 px-5">
-              </div> 
+            <form class="bg-white p-5 contact-form" action="{% url 'signin' %}" method="post">
+              {% csrf_token %}
+              {% block user_form %}
               
+              <div class="form-group">
+                {{ form.username }}
+              </div>
+              <div class="form-group">
+                {{ form.password }}
+              </div>
+              <div class="form-group">
+                Don't have any account? Create one <a href="{% url 'signup' %}">here</a>.
+                <input type="submit" value="Sign In" class="btn btn-primary py-3 px-5">
+              </div>
+
+              {% endblock %}
             </form>
           </div>
           <div class="col-md-6 d-flex">
@@ -28,4 +32,4 @@
         </div>
       </div>
     </section>
-{% endblock %} 
+{% endblock %}

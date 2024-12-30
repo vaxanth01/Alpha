@@ -1,0 +1,103 @@
+{% load static %}
+<div class="py-1 bg-primary d-none d-md-block">
+  <div class="container">
+    <div class="row no-gutters d-flex align-items-center px-md-0">
+      <div class="col-12">
+        <div class="row d-flex text-center text-md-left">
+          <!-- Phone -->
+          <div class="col-md-4 d-flex topper align-items-center justify-content-md-start">
+            <div class="icon mr-2 d-flex justify-content-center align-items-center">
+              <span class="icon-phone2"></span>
+            </div>
+            <span class="text">+91 97517-14568</span>
+          </div>
+          <!-- Email -->
+          <div class="col-md-4 d-flex topper align-items-center justify-content-md-start">
+            <div class="icon mr-2 d-flex justify-content-center align-items-center">
+              <span class="icon-paper-plane"></span>
+            </div>
+            <span class="text">evai@gmail.com</span>
+          </div>
+          <!-- Company Name -->
+          <div class="col-md-4 d-flex topper align-items-center justify-content-md-end">
+            <span class="text">EVAI &amp; TECHNOLOGY</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-white" id="ftco-navbar">
+  <div class="container">
+    <a href="{% url 'home' %}">
+      <img src="{% static 'images/evai.png' %}" alt="logo" class="logo">
+    </a>
+
+  <style>
+    /* Default logo size */
+    .logo {
+        width: 100px; /* Default size */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    /* Adjust logo size for smaller screens */
+    @media (max-width: 768px) { /* Target screens smaller than 768px */
+        .logo {
+            width: 70px; /* Smaller size for mobile */
+        }
+    }
+
+    @media (max-width: 480px) { /* Target even smaller screens (like phones) */
+        .logo {
+            width: 50px; /* Further reduce size */
+        }
+    }
+
+    /* Cart button color */
+    .cta-colored {
+        background-color: #28a745; /* Green color */
+    }
+
+    .nav-link {
+        color: #333; /* Dark text for readability */
+    }
+
+    .nav-link:hover {
+        color: #007bff; /* Blue color on hover */
+    }
+  </style>
+<script src="https://kit.fontawesome.com/bb2bf5f24b.js" crossorigin="anonymous"></script>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+  <i class="fa-solid fa-bars"></i>
+</button>
+
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown04">
+            <a class="dropdown-item" href="">Shop</a>
+            <a class="dropdown-item" href="">Wishlist</a>
+            <a class="dropdown-item" href="">Single Product</a>
+            <a class="dropdown-item" href="">Cart</a>
+            <a class="dropdown-item" href="">Checkout</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="" class="nav-link">Service</a></li>
+        <li class="nav-item"><a href="" class="nav-link">Contact</a></li>
+        <!-- <li class="nav-item cta cta-colored"><a href="" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li> -->
+        {% if request.user.is_authenticated %}
+        <li class="nav-item"><a href="{% url 'log_out' %}" class="nav-link">Welcome {{ user }}</a></li>
+        <li class="nav-item"><a href="{% url 'log_out' %}" class="nav-link">Signout</a></li>
+        {% else %}
+        <li class="nav-item"><a href="{% url 'log_in' %}" class="nav-link">Signin</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

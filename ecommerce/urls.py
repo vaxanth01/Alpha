@@ -20,7 +20,7 @@ urlpatterns = [
     path('post/', views.AddToCart.as_view(), name='post'),
     path('checkoutinfo/', views.CheckoutDetails.as_view(), name='checkoutinfo'),
     
-    path('register/', views.register_, name='register'),
+    path('register/', views.register, name='register'),
     path('log_in/', views.log_in, name='log_in'),
     path('log_out/', views.log_out, name='log_out'),
 
